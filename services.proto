@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package G6-CLI-UTILITY;
+
+import "google/protobuf/timestamp.proto";
+
+message StateData {
+    int32 id = 1; 
+    google.protobuf.Timestamp timestamp = 2; // time sent to monitor latency
+    oneof payload {
+        string text = 3; // if textual encoding
+        int32 number = 4; // if numeric encoding
+        }
+}
