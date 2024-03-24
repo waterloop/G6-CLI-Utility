@@ -10,5 +10,22 @@ message StateData {
     oneof payload {
         string text = 3; // if textual encoding
         int32 number = 4; // if numeric encoding
-        }
+    }
+}
+
+message Empty {}
+
+message Response {
+    string confirmation = 1;
+}
+
+service RequiredCommands {
+    rpc Begin(Empty) returns (Response); 
+    rpc End(Empty) returns (Response);
+    rpc Autopilot(Empty) returns (Response);
+    rpc Reset(Empty) returns (Response);
+    rpc Brake(Empty) returns (Response);
+    rpc Accelerate(Empty) returns (Response);
+    rpc Decelerate(Empty) returns (Response);
+    rpc HeartBeat(Empty) returns (Response);
 }
