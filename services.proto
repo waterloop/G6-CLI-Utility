@@ -1,20 +1,17 @@
 syntax = "proto3";
 
-package G6-CLI-UTILITY;
+package g6_cli_utility;
 
 import "google/protobuf/timestamp.proto";
 
 message StateData {
     int32 id = 1; 
     google.protobuf.Timestamp timestamp = 2; // time sent to monitor latency
-    oneof payload {
-        string text = 3; // if textual encoding
-        int32 number = 4; // if numeric encoding
-    }
+    string text = 3;
 }
 
 // Heartbeat message
-message HeartBeat {
+message Beat {
     int32 id = 1;
   //  google.protobuf.Timestamp timestamp = 2;
     uint32 buffer = 2; // uint32 max 
@@ -38,6 +35,6 @@ service RequiredCommands {
     rpc Brake(Data) returns (Response);
     rpc Accelerate(Data) returns (Response);
     rpc Decelerate(Data) returns (Response);
-    rpc HeartBeat(HeartBeat) returns (Response);
+    rpc HeartBeat(Beat) returns (Response);
     rpc SendStateData(StateData) returns (Response);
 }
