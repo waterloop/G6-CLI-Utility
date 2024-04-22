@@ -20,9 +20,10 @@ void Bluetooth::sendRPCRequest(const std::string& command){
             sendAccelerateRequest(command);
         case DECELERATE:
             sendDecelerateRequest(command);
-        default:
+        case UNKNOWN:
             this->sendUnknownRequest(command); // send the unknown request message to the pi
-        
+        default:
+            return;
     }
 }
 void Bluetooth::sendUnknownRequest(const std::string& command){

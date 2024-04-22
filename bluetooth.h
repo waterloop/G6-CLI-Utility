@@ -8,7 +8,8 @@ enum CommandType {
     RESET,
     BRAKE,
     ACCELERATE,
-    DECELERATE
+    DECELERATE,
+    UNKNOWN
 };
 
 */
