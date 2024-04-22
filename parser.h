@@ -12,11 +12,11 @@
 class Parser {
 public:
     std::string arg;
-    Parser(); // init parser object
     
     //void read(std::string command);
-    bool validate();
-    
+    bool validate(const std::string s);
+    int execute(const std::string s);
+    CommandType getCommandType(const std::string& command);
 };
 
 

@@ -1,5 +1,14 @@
 
 #include <string>
+enum CommandType {
+    BEGIN,
+    END,
+    AUTOPILOT,
+    RESET,
+    BRAKE,
+    ACCELERATE,
+    DECELERATE
+};
 const std::string VALID_COMMANDS[] = {"BEGIN", "END", "AUTOPILOT", "RESET", 
                                         "BRAKE", "ACCELERATE", "DECELERATE"};
 

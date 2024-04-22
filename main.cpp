@@ -14,7 +14,7 @@ int main(){
     while(std::cin >> command){
         if(command == "BEGIN"){
             parser.arg = command;
-            parser.validate();
+            parser.validate(command);
         }
 
     }
