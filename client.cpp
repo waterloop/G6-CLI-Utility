@@ -19,7 +19,7 @@ int main(){
     int status = connect(s, (struct sockaddr* )&addr, sizeof(addr)); 
 
     if (status < 0) {
-        std::cout << "OOPSIE POOPSIE NO CONNECTION :3" << std::endl;
+        std::cout << "OOPSIE POOPSIE NO CONNECTION 😒" << std::endl;
         return -1;
     }
     std::string command; 

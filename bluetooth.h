@@ -1,20 +1,5 @@
 #include "common.h"
 
-/*
-enum CommandType {
-    BEGIN,
-    END,
-    AUTOPILOT,
-    RESET,
-    BRAKE,
-    ACCELERATE,
-    DECELERATE,
-    UNKNOWN
-};
-
-*/
-
-
 class Bluetooth {
 public:
     void sendRPCRequest(const std::string& command);
