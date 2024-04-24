@@ -6,7 +6,7 @@
 // if pod returns 'ok' to a state change req, we can proceed with the state change 
 bool Parser::validate(std::string s){
     bool flag = false;
-    for(auto word : VALID_COMMANDS){
+    for(std::string word : VALID_COMMANDS){
         if (word == s) {
             flag = true;
         }
