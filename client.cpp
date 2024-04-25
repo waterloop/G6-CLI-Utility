@@ -24,3 +24,16 @@ int createSocket() {
     }
     return s; 
 }
+
+// while loop
+int main() {
+    int s = createSocket();
+    std::string command;
+
+    while (std::cin >> command) {
+        sendRPCRequest(command, s);
+    }
+    
+    close(s);
+    return 0;
+}

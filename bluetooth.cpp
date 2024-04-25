@@ -5,35 +5,34 @@
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 
-void Bluetooth::sendRPCRequest(const std::string& command){
+void Bluetooth::sendRPCRequest(const std::string& command, int s){ // s --> socket from client while loop
     Parser parser;
-    int s = createSocket();
     CommandType cmdType = parser.getCommandType(command);
 
     switch (cmdType){
         case BEGIN:
-            sendBeginRequest(command);
+            sendBeginRequest(command, s);
             break;
         case END:
-            sendEndRequest(command);
+            sendEndRequest(command, s);
             break;
         case AUTOPILOT:
-            sendAutopilotRequest(command);
+            sendAutopilotRequest(command, s);
             break;
         case RESET:
-            sendResetRequest(command);
+            sendResetRequest(command, s);
             break;
         case BRAKE:
-            sendBrakeRequest(command);
+            sendBrakeRequest(command, s);
             break;
         case ACCELERATE:
-            sendAccelerateRequest(command);
+            sendAccelerateRequest(command, s);
             break;
         case DECELERATE:
-            sendDecelerateRequest(command);
+            sendDecelerateRequest(command, s);
             break;
         case UNKNOWN:
-            this->sendUnknownRequest(command); // send the unknown request message to the pi
+            this->sendUnknownRequest(command, s); // send the unknown request message to the pi
             break;
         default:
             return;
@@ -41,56 +40,56 @@ void Bluetooth::sendRPCRequest(const std::string& command){
 }
 
 // Repetition in case future changes need to be made to requests
-void Bluetooth::sendBeginRequest(const std::string& command) {
+void Bluetooth::sendBeginRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendEndRequest(const std::string& command) {
+void Bluetooth::sendEndRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendAutopilotRequest(const std::string& command) {
+void Bluetooth::sendAutopilotRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendResetRequest(const std::string& command) {
+void Bluetooth::sendResetRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendBrakeRequest(const std::string& command) {
+void Bluetooth::sendBrakeRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendAccelerateRequest(const std::string& command) {
+void Bluetooth::sendAccelerateRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendDecelerateRequest(const std::string& command) {
+void Bluetooth::sendDecelerateRequest(const std::string& command, int s) {
     int w = write(s, command, len(command));
     if (w < 0) {
         std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
     }
 }
 
-void Bluetooth::sendUnknownRequest(const std::string& command){
+void Bluetooth::sendUnknownRequest(const std::string& command, int s){
     return;
 }
 
@@ -102,7 +101,7 @@ gpt spawned this nightmare
 #include <string>
 #include <cstdlib>
 
-void sendBluetoothCommand(const std::string& command) {
+void sendBluetoothCommand(const std::string& command, int s) {
     std::string device = "/dev/rfcomm0";  // Device file for the Bluetooth connection
     std::ofstream bt(device, std::ios::out);
 
