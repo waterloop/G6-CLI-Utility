@@ -1,6 +1,9 @@
 #include "bluetooth.h"
 #include "parser.h"
 #include "client.h"
+#include <sys/socket.h>
+#include <bluetooth/bluetooth.h>
+#include <bluetooth/rfcomm.h>
 
 void Bluetooth::sendRPCRequest(const std::string& command){
     Parser parser;
@@ -37,32 +40,54 @@ void Bluetooth::sendRPCRequest(const std::string& command){
     }
 }
 
+// Repetition in case future changes need to be made to requests
 void Bluetooth::sendBeginRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendEndRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendAutopilotRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendResetRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendBrakeRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendAccelerateRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendDecelerateRequest(const std::string& command) {
-    return;
+    int w = write(s, command, len(command));
+    if (w < 0) {
+        std::cout << "REQUEST FAILED (┬┬﹏┬┬)" << std::endl;
+    }
 }
 
 void Bluetooth::sendUnknownRequest(const std::string& command){
