@@ -5,7 +5,7 @@
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 
-int main(){
+int createSocket() {
     sockaddr_rc addr = { 0 };  
     char BT_address[18] = "34:FE:77:9D:C1:95";
     char response_buffer[1024] = { 0 };
@@ -22,10 +22,5 @@ int main(){
         std::cout << "OOPSIE POOPSIE NO CONNECTION 😒" << std::endl;
         return -1;
     }
-    std::string command; 
-
-    // begin CLI functionality
-    // write(s, command.c_str(), command.length());
-    return 0; 
+    return s; 
 }
-

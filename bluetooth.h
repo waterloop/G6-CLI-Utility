@@ -11,5 +11,4 @@ public:
     void sendBrakeRequest(const std::string& command);
     void sendAccelerateRequest(const std::string& command);
     void sendDecelerateRequest(const std::string& command);
-
 };

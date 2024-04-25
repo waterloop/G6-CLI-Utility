@@ -1,13 +1,7 @@
 #include "parser.h"
 #include "common.h"
 
-int Parser::execute(std::string s){
-    
-
-    return 0;
-}
-
-CommandType Parser::getCommandType(const std::string& command){
+CommandType Parser::getCommandType(const std::string& command) {
     if (command == "BEGIN") return BEGIN;
     if (command == "END") return END;
     if (command == "AUTOPILOT") return AUTOPILOT;
